@@ -39,11 +39,15 @@ RPG 프로젝트 내 아이템 기능
 
 범용적으로 사용할 수 있는 eapon Class와 
 플레이어가 무기와 관련된
+
 주무기 장착, 보조무기 장착, 무기 미장착 상태를 판별할
 Weapon과 관련된 Enum Class를 만들어준다.
+
 Weapon Class에서는 C++ 부분에서 대략적인 수치 값을 설정해주고,
 BP에서 BP_BaseWeapon을 생성 후
+
 자식 BP를 생성하여 수치 값을 수정하여 사용하였다.
+
 <Weapon 관련 코드 첨부>
  ![image](https://github.com/user-attachments/assets/39208ba1-1160-4fad-b101-265a58d7ee38)
 
