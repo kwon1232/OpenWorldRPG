@@ -14,3 +14,34 @@ graph TD
     Chase --> D1
     Attack --> D1
 
+
+순찰 흐름도
+
+graph TD
+    Start[Tick() 호출] --> D1{InTargetRange(PatrolTarget)?}
+    D1 -- Yes --> Choose[PatrolTarget = ChoosePatrolTarget()]
+    Choose --> SetTimer[SetTimer(PatrolTimer, RandomWait)]
+    SetTimer --> Move[MoveToTarget(PatrolTarget)]
+    Move --> Start
+    D1 -- No --> Continue[Continue Moving]
+    Continue --> Start
+
+추적 흐름
+
+graph TD
+    Event[PawnSeen / Tick()] --> C1{EnemyState < Attacking<br/>and not Dead?}
+    C1 -- No --> StartPatrol[StartPatrolling()]
+    C1 -- Yes --> C2{SeenPawn.Team == PlayerTeam?}
+    C2 -- No --> StartPatrol
+    C2 -- Yes --> Clear[ClearPatrolTimer()]
+    Clear --> Chase[ChaseTarget()]
+
+공격 흐름도
+
+graph TD
+    StartAtk[StartAttackTimer()] --> TimerExpired[Timer Expired]
+    TimerExpired --> AttackCall[Attack()]
+    AttackCall --> Engaged[EnemyState = Engaged]
+    Engaged --> AttackEnd[AttackEnd()]
+    AttackEnd --> CheckCombat[CheckCombatTarget()]
+
