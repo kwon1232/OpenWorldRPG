@@ -19,12 +19,12 @@ graph TD
 
 ```mermaid
 graph TD
-    Start[Tick() 호출] --> D1{InTargetRange(PatrolTarget)?}
-    D1 -- Yes --> Choose[PatrolTarget = ChoosePatrolTarget()]
-    Choose --> SetTimer[SetTimer(PatrolTimer, RandomWait)]
-    SetTimer --> Move[MoveToTarget(PatrolTarget)]
+    Start["Tick() 호출"] --> D1{"InTargetRange(PatrolTarget)?"}
+    D1 -- "Yes" --> Choose["PatrolTarget = ChoosePatrolTarget()"]
+    Choose --> SetTimer["SetTimer(PatrolTimer, RandomWait)"]
+    SetTimer --> Move["MoveToTarget(PatrolTarget)"]
     Move --> Start
-    D1 -- No  --> Continue[Continue Moving]
+    D1 -- "No"  --> Continue["Continue Moving"]
     Continue --> Start
 ```
 
@@ -32,21 +32,21 @@ graph TD
 
 ```mermaid
 graph TD
-    Event[PawnSeen / Tick()] --> C1{EnemyState < Attacking<br/>and not Dead?}
-    C1 -- No  --> StartPatrol[StartPatrolling()]
-    C1 -- Yes --> C2{SeenPawn.Team == PlayerTeam?}
-    C2 -- No  --> StartPatrol
-    C2 -- Yes --> Clear[ClearPatrolTimer()]
-    Clear --> Chase[ChaseTarget()]
+    Event["PawnSeen / Tick()"] --> C1{"EnemyState < Attacking<br/>and not Dead?"}
+    C1 -- "No"  --> StartPatrol["StartPatrolling()"]
+    C1 -- "Yes" --> C2{"SeenPawn.Team == PlayerTeam?"}
+    C2 -- "No"  --> StartPatrol
+    C2 -- "Yes" --> Clear["ClearPatrolTimer()"]
+    Clear --> Chase["ChaseTarget()"]
 ```
 
 ## 3. 공격 흐름도
 
 ```mermaid
 graph TD
-    StartAtk[StartAttackTimer()] --> TimerExpired[Timer Expired]
-    TimerExpired --> AttackCall[Attack()]
-    AttackCall --> Engaged[EnemyState = Engaged]
-    Engaged --> AttackEnd[AttackEnd()]
-    AttackEnd --> CheckCombat[CheckCombatTarget()]
+    StartAtk["StartAttackTimer()"] --> TimerExpired["Timer Expired"]
+    TimerExpired --> AttackCall["Attack()"]
+    AttackCall --> Engaged["EnemyState = Engaged"]
+    Engaged --> AttackEnd["AttackEnd()"]
+    AttackEnd --> CheckCombat["CheckCombatTarget()"]
 ```
