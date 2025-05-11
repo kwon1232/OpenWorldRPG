@@ -3,7 +3,7 @@ UE5 - RPG 게임 프로젝트
 
 ```mermaid
 graph TD
-    A[Tick() – AI 상태 체크] --> B{IsDead?}
+    A[Tick() - AI StateCheck] --> B{IsDead?}
     B -- Yes --> Z[Return]
     B -- No --> C{EnemyState > Patrolling?}
     C -- Yes --> D[CheckCombatTarget()]
@@ -28,3 +28,5 @@ graph TD
     style M fill:#f9f,stroke:#900,stroke-width:2px
     style K fill:#bbf
     style I fill:#bfb
+
+```
