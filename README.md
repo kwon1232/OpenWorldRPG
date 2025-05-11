@@ -2,8 +2,8 @@ UE5 - RPG 게임 프로젝트
 제작자 : 권지현
 
 ```mermaid
-flowchart TD
-    A[Tick() - AI 상태 체크] --> B{IsDead?}
+graph TD
+    A[Tick() – AI 상태 체크] --> B{IsDead?}
     B -- Yes --> Z[Return]
     B -- No --> C{EnemyState > Patrolling?}
     C -- Yes --> D[CheckCombatTarget()]
@@ -13,7 +13,7 @@ flowchart TD
     F -- Yes --> G[LoseInterest()]
     G --> H{IsEngaged?}
     H -- No --> I[StartPatrolling()]
-    
+
     F -- No --> J{IsOutsideAttackRadius AND !IsChasing?}
     J -- Yes --> K[ChaseTarget()]
     J -- No --> L{CanAttack()?}
@@ -28,5 +28,3 @@ flowchart TD
     style M fill:#f9f,stroke:#900,stroke-width:2px
     style K fill:#bbf
     style I fill:#bfb
-
-```
